@@ -10,40 +10,54 @@ public class Kakul9tor_1 {
         System.out.println("Введите уравнение:");
         Scanner scanner = new Scanner(System.in);
         String[] massiv = scanner.nextLine().split(" ");
+
+
         if (massiv.length != 3) {
-            throw new RuntimeException("т.к. формат математической операции не *удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
+            throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
         } else {
             B1 = massiv[0];
             oper = massiv[1];
             B2 = massiv[2];
         }
+        boolean tr1 =rom_arab2(B1);
+        boolean tr2 =rom_arab2(B2);
+        boolean ti1=AraTest(B1);
+        boolean ti2=AraTest(B2);
         //String B1 = scanner.next();
         //String oper = scanner.next();
         // String B2 = scanner.next();
+        if ((tr1 && !ti1 && !tr2 && ti2) || (!tr1 && ti1 && tr2 && !ti2))
+        {
+            throw new ArithmeticException("т.к Используются одновременно разные системы счисления");
+        }
+        if ((!tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && !tr2 && ti2)||(tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && tr2 && !ti2))
+        {
+            throw new ArithmeticException("т.к ввели не цифру");
+        }
+        int B3 = rom_arab(B1);
+        int B4 = rom_arab(B2);
         if (AraTest(B1) != AraTest(B2)) {
             throw new ArithmeticException("т.к Используются одновременно разные системы счисления или введены не корректные данные ");
         }
 
-        if (AraTest(B1)&&AraTest(B2))
-        {
+        if (AraTest(B1) && AraTest(B2)) {
             int N1, N2;
             N1 = Integer.parseInt(B1);
             N2 = Integer.parseInt(B2);
-            if(N1<1 || N2<1 || N1>10 || N2>10)
-            {throw new ArithmeticException("т.к введенное число должно быть от 1 до 10");}
-            else {
-            int ITOG = calc(oper, N1, N2);
-            System.out.println("Результат:" + ITOG);
-        }}
-        else  {
+            if (N1 < 1 || N2 < 1 || N1 > 10 || N2 > 10) {
+                throw new ArithmeticException("т.к введенное число должно быть от 1 до 10");
+            } else {
+                int ITOG = calc(oper, N1, N2);
+                System.out.println("Результат:" + ITOG);
+            }
+        } else {
             int N1 = rom_arab(B1);
-            int N2 = rom_arab2(B2);
+            int N2 = rom_arab(B2);
 
             if (N1 == 0 || N2 == 0) {
                 throw new ArithmeticException("т.к введены некоректные данные");
             }
-            if (N1 > 10 || N2 > 10)
-            {
+            if (N1 > 10 || N2 > 10) {
                 throw new ArithmeticException("т.к введенное число должно быть от I до X");
             } else {
                 int ITOG = calc(oper, N1, N2);
@@ -64,7 +78,7 @@ public class Kakul9tor_1 {
         int N1;
         try {
             N1 = Integer.parseInt(B1);
-                return true;
+            return true;
         } catch (NumberFormatException e) {
             return false;
         }
@@ -86,7 +100,7 @@ public class Kakul9tor_1 {
         return N1;
     }
 
-    public static int rom_arab2(String B2) {
+    public static boolean rom_arab2(String B2) {
         int N2 = 0;
         int[] decimal = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -97,7 +111,13 @@ public class Kakul9tor_1 {
                 B2 = B2.substring(roman[i].length());
             }
         }
-        return N2;
+        if (N2 > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+        //return N2;
     }
 
     public static String romanDigit(int n, String one, String five, String ten) {
