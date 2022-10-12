@@ -39,7 +39,11 @@ public class Kakul9tor_1 {
             int N1 = rom_arab(B1);
             int N2 = rom_arab2(B2);
 
-            if (N1 == 0 || N2 == 0 || N1 > 10 || N2 > 10) {
+            if (N1 == 0 || N2 == 0) {
+                throw new ArithmeticException("т.к введены некоректные данные");
+            }
+            if (N1 > 10 || N2 > 10)
+            {
                 throw new ArithmeticException("т.к введенное число должно быть от I до X");
             } else {
                 int ITOG = calc(oper, N1, N2);
