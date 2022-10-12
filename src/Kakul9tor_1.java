@@ -70,6 +70,11 @@ public class Kakul9tor_1 {
 
     public static boolean AraTest(String B1) {
         int N1;
+
+        String[] massiv=B1.split(""); // проверка на нолик в начале
+        if(massiv[0].equals("0")) {
+            throw new ArithmeticException("т.к. непиши 0 кроме как в 10ке сцуко пол часа жизни потратил");
+        }
         try {
             N1 = Integer.parseInt(B1);
             return true;
@@ -83,7 +88,10 @@ public class Kakul9tor_1 {
         int N1 = 0;
         int[] decimal = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
-
+        B1 = "ааааа";
+        int B3=B1.length();
+        if (B3>3 || B1=="VV")
+        { throw new RuntimeException("т.к. некоррректальные данные"); }
         for (int i = 0; i < decimal.length; i++) {
             while (B1.indexOf(roman[i]) == 0) {
                 N1 += decimal[i];
@@ -111,6 +119,7 @@ public class Kakul9tor_1 {
                 B2 = B2.substring(roman[i].length());
             }
         }
+        //if (B2 == "IIII" || B1 )
         if (N2 > 0) {
             return true;
         } else {
