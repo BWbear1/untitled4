@@ -44,7 +44,7 @@ public class Kakul9tor_1 {
             } else {
                 int ITOG = calc(oper, N1, N2);
                 if (ITOG <= 0) {
-                    System.out.println("т.к. в римской системе нет отрицательных чисел");
+                    throw new ArithmeticException("т.к. в римской системе нет таких чисел");
                 } else {
                     String result = convert(ITOG);
 
