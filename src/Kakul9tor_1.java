@@ -26,20 +26,14 @@ public class Kakul9tor_1 {
         //String B1 = scanner.next();
         //String oper = scanner.next();
         // String B2 = scanner.next();
-        if ((tr1 && !ti1 && !tr2 && ti2) || (!tr1 && ti1 && tr2 && !ti2))
+        if ((tr1 && !ti1 && !tr2 && ti2) || (!tr1 && ti1 && tr2 && !ti2)) // проверка инты+римляне
         {
             throw new ArithmeticException("т.к Используются одновременно разные системы счисления");
         }
-        if ((!tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && !tr2 && ti2)||(tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && tr2 && !ti2))
+        if ((!tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && !tr2 && ti2)||(tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && tr2 && !ti2)) // проверка на крокозябру
         {
             throw new ArithmeticException("т.к ввели не цифру");
         }
-        int B3 = rom_arab(B1);
-        int B4 = rom_arab(B2);
-        if (AraTest(B1) != AraTest(B2)) {
-            throw new ArithmeticException("т.к Используются одновременно разные системы счисления или введены не корректные данные ");
-        }
-
         if (AraTest(B1) && AraTest(B2)) {
             int N1, N2;
             N1 = Integer.parseInt(B1);
@@ -82,10 +76,10 @@ public class Kakul9tor_1 {
         } catch (NumberFormatException e) {
             return false;
         }
-    }
+    } // проверка на интовость
 
 
-    public static int rom_arab(String B1) {
+    public static int rom_arab(String B1) { // перевод римлян в арабов
         int N1 = 0;
         int[] decimal = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
@@ -98,7 +92,7 @@ public class Kakul9tor_1 {
         }
 
         return N1;
-    }
+    } //
 
     public static boolean rom_arab2(String B2) {
         int N2 = 0;
@@ -118,7 +112,7 @@ public class Kakul9tor_1 {
         }
 
         //return N2;
-    }
+    } // возможно пригодится если даник опять душнить будет
 
     public static String romanDigit(int n, String one, String five, String ten) {
 
@@ -145,7 +139,7 @@ public class Kakul9tor_1 {
 
         }
         return "";
-    }
+    } // часть 1 перевода арабов в римлян
 
     public static String convert(int ITOG) {
 
@@ -159,7 +153,7 @@ public class Kakul9tor_1 {
         String result = romanHundreds + romanTens + romanOnes;
         return result;
 
-    }
+    } //часть 2 перевода арабов в римлян
 
     public static int calc(String oper, int N1, int N2) //считалочка
     {
