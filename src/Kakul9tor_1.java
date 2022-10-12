@@ -90,8 +90,14 @@ public class Kakul9tor_1 {
                 B1 = B1.substring(roman[i].length());
             }
         }
-
-        return N1;
+        if (B1 == null || B1.isEmpty() || B1.trim().isEmpty())
+        {
+            return N1;
+        }
+        else
+        {
+            throw new RuntimeException("т.к. некоррректальные данные");
+        }
     } //
 
     public static boolean rom_arab2(String B2) {
