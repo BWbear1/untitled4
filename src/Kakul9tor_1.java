@@ -11,7 +11,6 @@ public class Kakul9tor_1 {
         Scanner scanner = new Scanner(System.in);
         String[] massiv = scanner.nextLine().split(" ");
 
-
 //        if (massiv.length != 3) {
 //            throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
 //        } else {
@@ -32,14 +31,14 @@ public class Kakul9tor_1 {
         }
         if ((!tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && !tr2 && ti2)||(tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && tr2 && !ti2)) // проверка на крокозябру
         {
-            throw new ArithmeticException("т.к ввели не цифру");
+            throw new ArithmeticException("т.к некорректные данные допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10][I, II, III, IV, V, VI, VII, VIII, IX, X]");
         }
         if (AraTest(B1) && AraTest(B2)) {
             int N1, N2;
             N1 = Integer.parseInt(B1);
             N2 = Integer.parseInt(B2);
             if (N1 < 1 || N2 < 1 || N1 > 10 || N2 > 10) {
-                throw new ArithmeticException("т.к введенное число должно быть от 1 до 10");
+                throw new ArithmeticException("т.к допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
             } else {
                 if (massiv.length != 3) {
                     throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
@@ -52,10 +51,10 @@ public class Kakul9tor_1 {
             int N2 = rom_arab(B2);
 
             if (N1 == 0 || N2 == 0) {
-                throw new ArithmeticException("т.к введены некоректные данные");
+                throw new ArithmeticException("т.к допустимый диапазон значений [I, II, III, IV, V, VI, VII, VIII, IX, X]");
             }
             if (N1 > 10 || N2 > 10) {
-                throw new ArithmeticException("т.к введенное число должно быть от I до X");
+                throw new ArithmeticException("т.к допустимый диапазон значений [I, II, III, IV, V, VI, VII, VIII, IX, X]");
             } else {
                 int ITOG = calc(oper, N1, N2);
                 if (ITOG <= 0) {
@@ -82,7 +81,7 @@ public class Kakul9tor_1 {
             N1 = Integer.parseInt(B1);
             String[] massiv=B1.split(""); // проверка на нолик в начале
             if(massiv[0].equals("0")) {
-                throw new ArithmeticException("т.к. непиши 0 кроме как в 10ке сцуко пол часа жизни потратил");
+                throw new ArithmeticException("т.к допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
             }
             return true;
 
@@ -98,7 +97,7 @@ public class Kakul9tor_1 {
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         int B3=B1.length();
         if (B3>3 || B1.equals("0")||B1.equals("VV"))
-        { throw new RuntimeException("т.к. некоррректальные данные"); }
+        { throw new RuntimeException("т.к допустимый диапазон значений [I, II, III, IV, V, VI, VII, VIII, IX, X]"); }
         for (int i = 0; i < decimal.length; i++) {
             while (B1.indexOf(roman[i]) == 0) {
                 N1 += decimal[i];
@@ -111,7 +110,7 @@ public class Kakul9tor_1 {
         }
         else
         {
-            throw new RuntimeException("т.к. некоррректальные данные");
+            throw new RuntimeException("т.к допустимый диапазон значений [I, II, III, IV, V, VI, VII, VIII, IX, X]");
         }
     } //
 
