@@ -15,8 +15,19 @@ public class Kakul9tor_1 {
 //            throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
 //        } else {
             B1 = massiv[0];
-            oper = massiv[1];
-            B2 = massiv[2];
+            if (massiv.length > 1)
+            {
+                oper = massiv[1];
+            }
+            else {
+            throw new RuntimeException("т.к. строка не является математической операцией");
+            }
+            if (massiv.length>2)
+            {B2 = massiv[2];
+            }
+            else {
+                throw new RuntimeException("т.к. строка не является математической операцией");
+            }
 //        }
         boolean tr1 =rom_arab2(B1);
         boolean tr2 =rom_arab2(B2);
@@ -31,14 +42,14 @@ public class Kakul9tor_1 {
         }
         if ((!tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && !tr2 && ti2)||(tr1 && !ti1 && !tr2 && !ti2)||(!tr1 && !ti1 && tr2 && !ti2)) // проверка на крокозябру
         {
-            throw new ArithmeticException("т.к некорректные данные допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10][I, II, III, IV, V, VI, VII, VIII, IX, X]");
+            throw new ArithmeticException("т.к некорректные данные допустимый диапазон значений [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10][I, II, III, IV, V, VI, VII, VIII, IX, X]");
         }
         if (AraTest(B1) && AraTest(B2)) {
             int N1, N2;
             N1 = Integer.parseInt(B1);
             N2 = Integer.parseInt(B2);
             if (N1 < 1 || N2 < 1 || N1 > 10 || N2 > 10) {
-                throw new ArithmeticException("т.к допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
+                throw new ArithmeticException("т.к допустимый диапазон значений [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
             } else {
                 if (massiv.length != 3) {
                     throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
@@ -81,7 +92,7 @@ public class Kakul9tor_1 {
             N1 = Integer.parseInt(B1);
             String[] massiv=B1.split(""); // проверка на нолик в начале
             if(massiv[0].equals("0")) {
-                throw new ArithmeticException("т.к допустимый диапазон значений [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
+                throw new ArithmeticException("т.к допустимый диапазон значений [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]");
             }
             return true;
 
