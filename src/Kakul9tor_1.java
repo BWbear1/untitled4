@@ -12,13 +12,13 @@ public class Kakul9tor_1 {
         String[] massiv = scanner.nextLine().split(" ");
 
 
-        if (massiv.length != 3) {
-            throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
-        } else {
+//        if (massiv.length != 3) {
+//            throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
+//        } else {
             B1 = massiv[0];
             oper = massiv[1];
             B2 = massiv[2];
-        }
+//        }
         boolean tr1 =rom_arab2(B1);
         boolean tr2 =rom_arab2(B2);
         boolean ti1=AraTest(B1);
@@ -41,6 +41,9 @@ public class Kakul9tor_1 {
             if (N1 < 1 || N2 < 1 || N1 > 10 || N2 > 10) {
                 throw new ArithmeticException("т.к введенное число должно быть от 1 до 10");
             } else {
+                if (massiv.length != 3) {
+                    throw new RuntimeException("т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, x )");
+                }
                 int ITOG = calc(oper, N1, N2);
                 System.out.println("Результат:" + ITOG);
             }
@@ -94,7 +97,7 @@ public class Kakul9tor_1 {
         int[] decimal = {100, 90, 50, 40, 10, 9, 5, 4, 1};
         String[] roman = {"C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
         int B3=B1.length();
-        if (B3>3 || B1.equals("0"))
+        if (B3>3 || B1.equals("0")||B1.equals("VV"))
         { throw new RuntimeException("т.к. некоррректальные данные"); }
         for (int i = 0; i < decimal.length; i++) {
             while (B1.indexOf(roman[i]) == 0) {
